@@ -1,5 +1,5 @@
 <template>
-  <main><i class="fab fa-accessible-icon"></i></main>
+  <main></main>
 </template>
 
 <script>

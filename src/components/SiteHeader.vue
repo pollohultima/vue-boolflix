@@ -1,9 +1,16 @@
 <template>
-  <header>siteheader</header>
+  <header>
+    <SearchMovie />
+  </header>
 </template>
 
 <script>
-export default {};
+import SearchMovie from "./SearchMovie.vue";
+export default {
+  components: {
+    SearchMovie,
+  },
+};
 </script>
 
 <style>
