@@ -1,9 +1,16 @@
 <template>
-  <main></main>
+  <main>
+    <MoviesList />
+  </main>
 </template>
 
 <script>
-export default {};
+import MoviesList from "./MoviesList.vue";
+export default {
+  components: {
+    MoviesList,
+  },
+};
 </script>
 
 <style>
