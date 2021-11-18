@@ -1,17 +1,19 @@
 <template>
   <div class="moviesList">
     <SearchMovie
-      class="m-3"
+      class="m-3 text-center"
       :searchString="searchText"
       @search-movie="search"
     />
     <div class="container">
-      <div class="row">
+      <div class="row g-2">
         <div class="col-2" v-for="movie in movies" :key="movie.id">
-          <h4 class="text-center">{{ movie.title }}</h4>
-          <h5 class="text-center">{{ movie.original_title }}</h5>
-          <h6>Language: {{ movie.original_language }}</h6>
-          <h6>Rating: {{ movie.vote_average }}</h6>
+          <div class="card d-flex flex-column justify-content-around p-2">
+            <h4 class="text-center">{{ movie.title }}</h4>
+            <h5 class="text-center">{{ movie.original_title }}</h5>
+            <h6>Language: {{ movie.original_language }}</h6>
+            <h6>Rating: {{ movie.vote_average }}</h6>
+          </div>
         </div>
       </div>
     </div>
@@ -52,5 +54,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.card {
+  height: 100%;
+}
 </style>
