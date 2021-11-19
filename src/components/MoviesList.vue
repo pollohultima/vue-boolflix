@@ -35,7 +35,21 @@
               </div>
             </div>
 
-            <h6>Rating: {{ Math.round(show.vote_average / 2) }}</h6>
+            <div class="d-flex">
+              <h6>Rating:</h6>
+              <div
+                v-for="star in Math.round(movie.vote_average / 2)"
+                :key="star"
+              >
+                <font-awesome-icon icon="star" class="gold" />
+              </div>
+              <div
+                v-for="star in 5 - Math.round(movie.vote_average / 2)"
+                :key="star"
+              >
+                <font-awesome-icon icon="star" class="gray" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -67,7 +81,21 @@
                 <flag :iso="show.original_language" />
               </div>
             </div>
-            <h6>Rating: {{ Math.round(show.vote_average / 2) }}</h6>
+            <div class="d-flex">
+              <h6>Rating:</h6>
+              <div
+                v-for="star in Math.round(show.vote_average / 2)"
+                :key="star"
+              >
+                <font-awesome-icon icon="star" class="gold" />
+              </div>
+              <div
+                v-for="star in 5 - Math.round(show.vote_average / 2)"
+                :key="star"
+              >
+                <font-awesome-icon icon="star" class="gray" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -129,5 +157,13 @@ export default {
 <style lang="scss">
 .card {
   height: 100%;
+}
+
+.gold {
+  color: gold;
+}
+
+.gray {
+  color: lightgray;
 }
 </style>
