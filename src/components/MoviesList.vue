@@ -1,10 +1,6 @@
 <template>
   <div class="moviesList">
-    <Search
-      class="m-3 text-center"
-      :searchString="searchText"
-      @search="search"
-    />
+    <Search :searchString="searchText" @search="search" />
     <div class="container">
       <h2>Movies</h2>
       <div class="row g-2">
@@ -145,10 +141,6 @@ export default {
         .catch((error) => {
           console.log(error, "ERROR");
         });
-    },
-
-    rating() {
-      this.shows.vote_avarage;
     },
   },
 };
