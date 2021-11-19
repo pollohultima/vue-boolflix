@@ -9,24 +9,25 @@
       <h2>Movies</h2>
       <div class="row g-2">
         <div class="col-2" v-for="movie in movies" :key="movie.id">
-          <div class="card d-flex flex-column justify-content-around p-2">
+          <div class="card d-flex flex-column p-2">
+            <img
+              :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
+              :alt="movie.title"
+            />
             <h4 class="text-center">{{ movie.title }}</h4>
             <h5 class="text-center">{{ movie.original_title }}</h5>
             <div>
+              <span><h6>Language:</h6></span>
               <div v-if="movie.original_language === 'en'">
-                <h6>Language:</h6>
                 <flag iso="gb" />
               </div>
               <div v-if="movie.original_language === 'ko'">
-                <h6>Language:</h6>
                 <flag iso="kr" />
               </div>
               <div v-if="movie.original_language === 'ja'">
-                <h6>Language:</h6>
                 <flag iso="jp" />
               </div>
-              <div v-else-if="movie.original_language === 'zh'">
-                <h6>Language:</h6>
+              <div v-if="movie.original_language === 'zh'">
                 <flag iso="cn" />
               </div>
               <div v-else>
@@ -34,38 +35,39 @@
               </div>
             </div>
 
-            <h6>Rating: {{ movie.vote_average }}</h6>
+            <h6>Rating: {{ Math.round(show.vote_average / 2) }}</h6>
           </div>
         </div>
       </div>
       <h2>TV Series</h2>
       <div class="row g-2">
         <div class="col-2" v-for="show in shows" :key="show.id">
-          <div class="card d-flex flex-column justify-content-around p-2">
+          <div class="card d-flex flex-column p-2">
+            <img
+              :src="`https://image.tmdb.org/t/p/w342/${show.poster_path}`"
+              :alt="show.title"
+            />
             <h4 class="text-center">{{ show.name }}</h4>
             <h5 class="text-center">{{ show.original_name }}</h5>
             <div>
+              <span><h6>Language:</h6></span>
               <div v-if="show.original_language === 'en'">
-                <h6>Language:</h6>
                 <flag iso="gb" />
               </div>
               <div v-if="show.original_language === 'ko'">
-                <h6>Language:</h6>
                 <flag iso="kr" />
               </div>
               <div v-if="show.original_language === 'ja'">
-                <h6>Language:</h6>
                 <flag iso="jp" />
               </div>
               <div v-else-if="show.original_language === 'zh'">
-                <h6>Language:</h6>
                 <flag iso="cn" />
               </div>
               <div v-else>
                 <flag :iso="show.original_language" />
               </div>
             </div>
-            <h6>Rating: {{ show.vote_average }}</h6>
+            <h6>Rating: {{ Math.round(show.vote_average / 2) }}</h6>
           </div>
         </div>
       </div>
@@ -104,7 +106,6 @@ export default {
         .catch((error) => {
           console.log(error, "ERROR");
         });
-      this.searchString = "";
 
       axios
         .get(
@@ -116,7 +117,6 @@ export default {
         .catch((error) => {
           console.log(error, "ERROR");
         });
-      this.searchString = "";
     },
   },
 };
