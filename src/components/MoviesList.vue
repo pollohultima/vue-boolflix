@@ -44,7 +44,27 @@
           <div class="card d-flex flex-column justify-content-around p-2">
             <h4 class="text-center">{{ show.name }}</h4>
             <h5 class="text-center">{{ show.original_name }}</h5>
-            <h6>Language: {{ show.original_language }}</h6>
+            <div>
+              <div v-if="show.original_language === 'en'">
+                <h6>Language:</h6>
+                <flag iso="gb" />
+              </div>
+              <div v-if="show.original_language === 'ko'">
+                <h6>Language:</h6>
+                <flag iso="kr" />
+              </div>
+              <div v-if="show.original_language === 'ja'">
+                <h6>Language:</h6>
+                <flag iso="jp" />
+              </div>
+              <div v-else-if="show.original_language === 'zh'">
+                <h6>Language:</h6>
+                <flag iso="cn" />
+              </div>
+              <div v-else>
+                <flag :iso="show.original_language" />
+              </div>
+            </div>
             <h6>Rating: {{ show.vote_average }}</h6>
           </div>
         </div>
@@ -80,6 +100,18 @@ export default {
         )
         .then((r) => {
           this.movies = r.data.results;
+        })
+        .catch((error) => {
+          console.log(error, "ERROR");
+        });
+      this.searchString = "";
+
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/tv?api_key=b8a9c9466f2868b183c2e2880382011d&query=${this.searchText}`
+        )
+        .then((r) => {
+          this.shows = r.data.results;
         })
         .catch((error) => {
           console.log(error, "ERROR");
