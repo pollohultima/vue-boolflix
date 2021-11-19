@@ -1,19 +1,27 @@
 <template>
   <div class="moviesList">
     <Search :searchString="searchText" @search="search" />
-    <div class="container">
-      <h2>Movies</h2>
-      <div class="row g-2">
+    <div class="container-fluid">
+      <h2 class="text-white">Movies:</h2>
+      <div class="row g-3">
         <div class="col-2" v-for="movie in movies" :key="movie.id">
           <div class="card d-flex flex-column p-2">
             <img
+              v-if="movie.poster_path !== null"
               :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
+              alt=""
+            />
+            <img
+              class="img-fluid"
+              v-else
+              src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
               :alt="movie.title"
             />
-            <h4 class="text-center">{{ movie.title }}</h4>
-            <h5 class="text-center">{{ movie.original_title }}</h5>
-            <div>
-              <span><h6>Language:</h6></span>
+
+            <h4 class="text-center text-white">{{ movie.title }}</h4>
+            <h5 class="text-center text-white">{{ movie.original_title }}</h5>
+            <div class="laguage_wrapper">
+              <div class="text-white">Language:</div>
               <div v-if="movie.original_language === 'en'">
                 <flag iso="gb" />
               </div>
@@ -49,13 +57,20 @@
           </div>
         </div>
       </div>
-      <h2>TV Series</h2>
+      <h2 class="text-white">TV Series:</h2>
       <div class="row g-2">
         <div class="col-2" v-for="show in shows" :key="show.id">
           <div class="card d-flex flex-column p-2">
             <img
-              :src="`https://image.tmdb.org/t/p/w342/${show.poster_path}`"
-              :alt="show.title"
+              v-if="show.poster_path !== null"
+              :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
+              alt=""
+            />
+            <img
+              class="img-fluid"
+              v-else
+              src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
+              :alt="movie.title"
             />
             <h4 class="text-center">{{ show.name }}</h4>
             <h5 class="text-center">{{ show.original_name }}</h5>
@@ -149,6 +164,7 @@ export default {
 <style lang="scss">
 .card {
   height: 100%;
+  background: rgb(20, 20, 20) !important;
 }
 
 .gold {
