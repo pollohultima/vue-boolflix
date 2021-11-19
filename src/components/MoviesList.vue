@@ -118,6 +118,10 @@ export default {
           console.log(error, "ERROR");
         });
     },
+
+    rating() {
+      this.shows.vote_avarage;
+    },
   },
 };
 </script>
