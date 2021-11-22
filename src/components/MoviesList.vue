@@ -28,10 +28,12 @@
               "
             >
               <div class="text-white">
-                <p>Title:{{ movie.title }}</p>
+                <p><strong>Title: </strong>{{ movie.title }}</p>
               </div>
               <div class="original text-white">
-                <p>Original Title: {{ movie.original_title }}</p>
+                <p>
+                  <strong>Original Title: </strong>{{ movie.original_title }}
+                </p>
               </div>
               <div class="language_wrapper d-flex">
                 <span class="text-white">Language: </span>
@@ -53,7 +55,7 @@
               </div>
 
               <div class="rating_wrapper d-flex">
-                <h6 class="text-white">Rating:</h6>
+                <p class="text-white"><strong>Rating:</strong></p>
                 <div
                   v-for="star in Math.ceil(movie.vote_average / 2)"
                   :key="star"
@@ -69,7 +71,9 @@
               </div>
 
               <div class="overview">
-                <p class="text-white">Overview: {{ movie.overview }}</p>
+                <p class="text-white">
+                  <strong>Overview: </strong>{{ movie.overview }}
+                </p>
               </div>
             </div>
           </div>
@@ -101,12 +105,14 @@
                 align-items-start
               "
             >
-              <p class="text-white">Title:{{ show.name }}</p>
+              <p class="text-white"><strong>Title: </strong>{{ show.name }}</p>
 
-              <p class="text-white">Original title:{{ show.original_name }}</p>
+              <p class="text-white">
+                <strong>Original title: </strong>{{ show.original_name }}
+              </p>
 
               <div class="language_wrapper d-flex">
-                <span class="text-white">Language: </span>
+                <span class="text-white"><strong>Language: </strong></span>
                 <div v-if="show.original_language === 'en'">
                   <flag iso="gb" />
                 </div>
@@ -125,7 +131,7 @@
               </div>
 
               <div class="rating_wrapper d-flex">
-                <h6 class="text-white">Rating:</h6>
+                <h6 class="text-white"><strong>Rating: </strong></h6>
                 <div
                   v-for="star in Math.ceil(show.vote_average / 2)"
                   :key="star"
@@ -141,7 +147,9 @@
               </div>
 
               <div class="overview">
-                <p class="text-white">Overview: {{ show.overview }}</p>
+                <p class="text-white">
+                  <strong>Overview: </strong>{{ show.overview }}
+                </p>
               </div>
             </div>
           </div>
