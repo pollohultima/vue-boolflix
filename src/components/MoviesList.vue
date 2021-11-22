@@ -11,51 +11,62 @@
               alt=""
             />
             <img
-              class="img-fluid"
+              class="notfound"
               v-else
               src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
               :alt="movie.title"
             />
 
-            <span class="text-center text-white"
-              ><h5>{{ movie.title }}</h5></span
+            <div
+              class="
+                info
+                position-absolute
+                d-flex
+                flex-column
+                justify-content-around
+                align-items-start
+              "
             >
-            <span class="original text-center text-white"
-              >Original Title:
-              <p>{{ movie.original_title }}</p></span
-            >
-            <div class="language_wrapper d-flex">
-              <span>Language:</span>
-              <div v-if="movie.original_language === 'en'">
-                <flag iso="gb" />
+              <div class="text-white">
+                <h5>Title:{{ movie.title }}</h5>
               </div>
-              <div v-if="movie.original_language === 'ko'">
-                <flag iso="kr" />
+              <div class="original text-white">
+                Original Title:
+                <p>{{ movie.original_title }}</p>
               </div>
-              <div v-if="movie.original_language === 'ja'">
-                <flag iso="jp" />
+              <div class="language_wrapper d-flex">
+                <span class="text-white">Language:</span>
+                <div v-if="movie.original_language === 'en'">
+                  <flag iso="gb" />
+                </div>
+                <div v-if="movie.original_language === 'ko'">
+                  <flag iso="kr" />
+                </div>
+                <div v-if="movie.original_language === 'ja'">
+                  <flag iso="jp" />
+                </div>
+                <div v-if="movie.original_language === 'zh'">
+                  <flag iso="cn" />
+                </div>
+                <div v-else>
+                  <flag :iso="movie.original_language" />
+                </div>
               </div>
-              <div v-if="movie.original_language === 'zh'">
-                <flag iso="cn" />
-              </div>
-              <div v-else>
-                <flag :iso="movie.original_language" />
-              </div>
-            </div>
 
-            <div class="rating_wrapper d-flex">
-              <h6>Rating:</h6>
-              <div
-                v-for="star in Math.round(movie.vote_average / 2)"
-                :key="star"
-              >
-                <font-awesome-icon icon="star" class="gold" />
-              </div>
-              <div
-                v-for="star in 5 - Math.round(movie.vote_average / 2)"
-                :key="star"
-              >
-                <font-awesome-icon icon="star" class="gray" />
+              <div class="rating_wrapper d-flex">
+                <h6 class="text-white">Rating:</h6>
+                <div
+                  v-for="star in Math.round(movie.vote_average / 2)"
+                  :key="star"
+                >
+                  <font-awesome-icon icon="star" class="gold" />
+                </div>
+                <div
+                  v-for="star in 5 - Math.round(movie.vote_average / 2)"
+                  :key="star"
+                >
+                  <font-awesome-icon icon="star" class="gray" />
+                </div>
               </div>
             </div>
           </div>
@@ -77,13 +88,24 @@
               :alt="show.title"
             />
 
-            <div class="info position-absolute">
-              <h4 class="text-center">{{ show.name }}</h4>
+            <div
+              class="
+                info
+                position-absolute
+                d-flex
+                flex-column
+                justify-content-around
+                align-items-start
+              "
+            >
+              <h5 class="text-white">Title:{{ show.name }}</h5>
 
-              <h5 class="text-center">{{ show.original_name }}</h5>
+              <h5 class="text-white">
+                Original title:{{ show.original_name }}
+              </h5>
 
               <div class="language_wrapper d-flex">
-                <span>Language:</span>
+                <span class="text-white">Language:</span>
                 <div v-if="show.original_language === 'en'">
                   <flag iso="gb" />
                 </div>
@@ -102,7 +124,7 @@
               </div>
 
               <div class="rating_wrapper d-flex">
-                <h6>Rating:</h6>
+                <h6 class="text-white">Rating:</h6>
                 <div
                   v-for="star in Math.round(show.vote_average / 2)"
                   :key="star"
@@ -137,6 +159,24 @@ export default {
 .card {
   height: 100%;
   background: rgb(20, 20, 20) !important;
+  max-height: 420px;
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover .info {
+    display: block !important;
+  }
+  &:hover img {
+    filter: brightness(0.3) blur(3px);
+  }
+  .info {
+    height: 100%;
+    width: 95%;
+    display: none !important;
+  }
+  img {
+    height: 100%;
+  }
 }
 
 .notfound {
