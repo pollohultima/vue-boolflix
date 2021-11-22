@@ -28,14 +28,13 @@
               "
             >
               <div class="text-white">
-                <h5>Title:{{ movie.title }}</h5>
+                <p>Title:{{ movie.title }}</p>
               </div>
               <div class="original text-white">
-                Original Title:
-                <p>{{ movie.original_title }}</p>
+                <p>Original Title: {{ movie.original_title }}</p>
               </div>
               <div class="language_wrapper d-flex">
-                <span class="text-white">Language:</span>
+                <span class="text-white">Language: </span>
                 <div v-if="movie.original_language === 'en'">
                   <flag iso="gb" />
                 </div>
@@ -56,17 +55,21 @@
               <div class="rating_wrapper d-flex">
                 <h6 class="text-white">Rating:</h6>
                 <div
-                  v-for="star in Math.round(movie.vote_average / 2)"
+                  v-for="star in Math.ceil(movie.vote_average / 2)"
                   :key="star"
                 >
                   <font-awesome-icon icon="star" class="gold" />
                 </div>
                 <div
-                  v-for="star in 5 - Math.round(movie.vote_average / 2)"
+                  v-for="star in 5 - Math.ceil(movie.vote_average / 2)"
                   :key="star"
                 >
                   <font-awesome-icon icon="star" class="gray" />
                 </div>
+              </div>
+
+              <div class="overview">
+                <p class="text-white">Overview: {{ movie.overview }}</p>
               </div>
             </div>
           </div>
@@ -98,14 +101,12 @@
                 align-items-start
               "
             >
-              <h5 class="text-white">Title:{{ show.name }}</h5>
+              <p class="text-white">Title:{{ show.name }}</p>
 
-              <h5 class="text-white">
-                Original title:{{ show.original_name }}
-              </h5>
+              <p class="text-white">Original title:{{ show.original_name }}</p>
 
               <div class="language_wrapper d-flex">
-                <span class="text-white">Language:</span>
+                <span class="text-white">Language: </span>
                 <div v-if="show.original_language === 'en'">
                   <flag iso="gb" />
                 </div>
@@ -126,17 +127,21 @@
               <div class="rating_wrapper d-flex">
                 <h6 class="text-white">Rating:</h6>
                 <div
-                  v-for="star in Math.round(show.vote_average / 2)"
+                  v-for="star in Math.ceil(show.vote_average / 2)"
                   :key="star"
                 >
                   <font-awesome-icon icon="star" class="gold" />
                 </div>
                 <div
-                  v-for="star in 5 - Math.round(show.vote_average / 2)"
+                  v-for="star in 5 - Math.ceil(show.vote_average / 2)"
                   :key="star"
                 >
                   <font-awesome-icon icon="star" class="gray" />
                 </div>
+              </div>
+
+              <div class="overview">
+                <p class="text-white">Overview: {{ show.overview }}</p>
               </div>
             </div>
           </div>
@@ -176,6 +181,10 @@ export default {
   }
   img {
     height: 100%;
+  }
+  .overview {
+    overflow-y: auto;
+    height: calc(100% - 170px);
   }
 }
 

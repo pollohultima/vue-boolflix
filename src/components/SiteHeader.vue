@@ -2,7 +2,7 @@
   <div class="head pe-5 d-flex align-items-center justify-content-between">
     <div class="logo ps-5">
       <img
-        src="https://fontmeme.com/permalink/211119/f5c422282f53e11f43fdde71afc7dcbc.png"
+        src="https://fontmeme.com/permalink/211122/c072857f28ffed69c9266a55183f4c20.png"
         alt=""
       />
     </div>

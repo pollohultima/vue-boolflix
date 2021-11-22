@@ -58,7 +58,7 @@ export default {
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 body {
-  background: rgb(70, 70, 70);
+  background: rgb(49, 49, 49);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
