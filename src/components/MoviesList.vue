@@ -4,7 +4,7 @@
       <h2 class="text-white">Movies:</h2>
       <div class="row g-3">
         <div class="col-2" v-for="movie in movies" :key="movie.id">
-          <div class="card d-flex flex-column p-2 position-realative">
+          <div class="card d-flex flex-column p-2 position-relative">
             <img
               v-if="movie.poster_path !== null"
               :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
@@ -64,7 +64,7 @@
       <h2 class="text-white">TV Series:</h2>
       <div class="row g-2">
         <div class="col-2" v-for="show in shows" :key="show.id">
-          <div class="card d-flex flex-column p-2 position-realative">
+          <div class="card d-flex flex-column p-2 position-relative">
             <img
               v-if="show.poster_path !== null"
               :src="`https://image.tmdb.org/t/p/w342/${show.poster_path}`"
